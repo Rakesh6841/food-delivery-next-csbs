@@ -1,21 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.input-wrapper {
+  margin: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.input-field {
+  width: 200px;
+  height: 30px;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.button {
+  width: 200px;
+  height: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}
+
+.button-link {
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: skyblue;
+  margin: 20px;
 }
