@@ -10,8 +10,14 @@ const RestaurantSignUp = () => {
     const [address, setAddress] = useState('');
     const [contact, setContact] = useState('');
     const router = useRouter();
+    const [error, setError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
     const handleSignUp = async () => {
+        if (password !== confirmPassword) {
+            setPasswordError(true);
+        }
+        return false
         console.log({
             email,
             password,
@@ -57,11 +63,17 @@ const RestaurantSignUp = () => {
                     <input type="password" placeholder='Enter password' className='input-field'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} />
+                    {
+                        passwordError && <span className='input-error'>Password and Confirm Password does not match</span>
+                    }
                 </div>
                 <div className='input-wrapper'>
                     <input type="password" placeholder='Confirm password' className='input-field'
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)} />
+                    {
+                        passwordError && <span>Password and Confirm Password does not match</span>
+                    }
                 </div>
                 <div className='input-wrapper'>
                     <input type="text" placeholder='Enter restaurant name' className='input-field'
