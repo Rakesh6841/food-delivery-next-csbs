@@ -14,10 +14,15 @@ export async function GET() {
 
 export async function POST(request) {
     let payload = await request.json();
-
+    let result;
     await mongoose.connect(connectionStr, { useNewUrlParser: true });
 
-    const restaurant = await restaurantSchema.create(payload);
-    const result = await restaurant.save();
+    if (payload.login) {
+        result = await restaurantSchema.findOne({ email: payload.email, password: payload.password });
+    } else {
+        const restaurant = await restaurantSchema.create(payload);
+        result = await restaurant.save();
+    }
+
     return NextResponse.json({ result, success: true });
 }
